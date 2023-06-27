@@ -1,0 +1,88 @@
+<head>
+    <style>
+              .page-infor {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        .container form {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .container form input[type="text"],
+        .container form input[type="number"],
+        .container form select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .container form select {
+            height: 40px;
+        }
+
+        .container form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .container form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .container form a.btn {
+            background-color: #7f8c8d;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .container form a.btn:hover {
+            background-color: #34495e;
+        }
+    </style>
+</head>
+
+<div class="page-infor">
+    <h3>Enter category information:</h3>
+</div>
+<div class="container">
+    <form action="/add_category" method="post">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                    <strong>Category Name:</strong>
+                    <input type="text" name="name" class="form-control" placeholder="Name" required>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                    <strong>Description:</strong>
+                    <input type="text" name="description" class="form-control" placeholder="Description" required>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <a class="btn btn-prinary" href="/admin/homepage">Back</a>
+                <button type="submit" value="add" onclick="return confirm('Confirm adding this category?')">Add</button>
+            </div>
+        </div>
+    </form>
+</div>

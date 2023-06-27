@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Toy Store</title>
+    <script src="https://kit.fontawesome.com/9aa36a5db4.js" crossorigin="anonymous"></script>
+    <style>
+        header {
+            top: 0;
+            z-index: 999;
+            color: #445760;
+        }
+
+        .nav {
+            width: auto;
+            margin-top: -10px;
+            background: #6f42c1;
+            /* overflow: hidden; */
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav ul li {
+            border-radius: 10px black;
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .nav ul li a {
+            /* float: left; */
+            display: block;
+            padding: 10px;
+            font-size: 18px;
+            color: whitesmoke;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav ul li a:hover {
+            background-color: #333;
+            color: gainsboro;
+            border-radius: 5%;
+        }
+
+        .nav ul li a:nth-child(8):hover {
+            border-radius: 50%;
+        }
+
+        .nav ul li a img.logo {
+            width: 50px;
+        }
+
+        main {
+            margin-top: 50px;
+        }
+
+        .container {
+            margin-top: -40px;
+            height: 500px;
+        }
+
+        .categories {
+            width: 15%;
+            float: left;
+            padding: 30px;
+            margin-left: -50px;
+        }
+
+        .categories h2 {
+            margin-top: 0;
+        }
+
+        .categories ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .categories li {
+            margin-bottom: 10px;
+        }
+
+        .categories a {
+            display: block;
+            padding: 5px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .categories a:hover {
+            background-color: #ccc;
+        }
+
+        .products {
+            width: 80%;
+            float: right;
+            padding: 30px;
+        }
+
+        .products h2 {
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .product-container {
+            width: 180px;
+            float: left;
+            margin-right: 5%;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .product-container:hover {
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-infor {
+            display: block;
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .product-infor img {
+            width: 100%;
+            height: auto;
+            transition: all 0.3s ease;
+        }
+
+        .product-infor:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-container h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .product-container p {
+            margin: 5px 0;
+            /* color: #b;  */
+            font-weight: bold;
+        }
+
+        .product-container button {
+            display: block;
+            float: right;
+            padding: 5px;
+            font-size: 25px;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .product-container button:hover {
+            border-radius: 5%;
+            color: rgb(242, 18, 6);
+            background-color: rgb(167, 39, 164);
+        }
+
+        footer {
+            display: flex;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="welcome">
+            <h2 align="center">Welcome to our Shop!</h2>
+            <p align="center">[ Hope you enjoy our service!!! ]</p>
+            <br>
+        </div>
+        <div class="nav">
+            <ul>
+                {{!-- <li><a href=""><img class="logo" src="{{ asset('images/Logo-vip.png') }}" alt="Logo"></a></li>
+                --}}
+                <li><a href="/user/homepage">Home</a></li>
+                <li><a href="/user/toy_list">View Toy List</a></li>
+                <li><a href="/admin/homepage">Login as Admin</a></li>
+                {{!-- <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li> --}}
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section class="categories">
+                <h2>Categories</h2>
+                <ul>
+                    <li><a href="">All Products</a></li>
+                    {{#each categories }}
+                    <li>
+                        <a href="">{{ name }}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </section>
+            <section class="products">
+                <h2>Products</h2>
+                {{#each toys }}
+                <article class="product-container" id="">
+                    <a class="product-infor" href="">
+                        <img src="{{ image }}" alt="">
+                    </a>
+                    <h4>{{ name }}</h4>
+                    <p>${{ price }}</p>
+                    <form action="" method="GET">
+                        {{!-- {{-- <a href="#" onclick="alert('{{$product->product_id}}')">Add to Cart</a> --}}
+                        <button type="submit"><i class="fa-solid fa-cart-plus"></i></button>
+                    </form>
+                </article>
+                {{else}}
+                <h5>(No Product Found!!!)</h5>
+                {{/each}}
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; Copyright by Our Team</p>
+        <p>Have any question? <a href="#">Contact us here</a></p>
+    </footer>
+</body>
+
+</html>

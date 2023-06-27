@@ -1,0 +1,119 @@
+<head>
+    <style>
+       .menu {
+            position: fixed;
+            left: 5px;
+            margin-top: 5px;
+            width: 200px;
+            height: 100%;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li {
+            margin: 0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu li:last-child {
+            border-bottom: none;
+        }
+
+        .menu li a {
+            display: block;
+            color: #333;
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .menu li a:hover {
+            background-color: #ddd;
+        }
+
+        h2,
+        .row a {
+            margin-left: 100px;
+        }
+
+        table {
+            margin-left: 100px;
+            margin-top: 20px;
+        }
+
+        thead,
+        tbody {
+            text-align: center;
+        }
+
+        tbody tr td {
+            vertical-align: baseline;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<div class="container">
+   <div class="menu">
+        <ul>
+            <li><a href="/admin/homepage">Home</a></li>
+            <li><a href="/admin/manage_categories">Manage Categories</a></li>
+            <li><a href="/admin/manage_toys">Manage Toys</a></li>
+            <li><a href="/user/toy_list">View Product Page</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <h2>Manage Toyes Data</h2>
+        <div class="row">
+            <div class="pull-right">
+                <a class="btn btn-primary" href="/admin/add_toy">Add New Toy</a>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered data-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Brand</th>
+                <th>Quantity</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each toys }}
+            <tr>
+                <td>{{ name }}</td>
+                <td>${{ price }}</td>
+                <td><img src="{{ image }}" alt="Loading"></td>
+                <td>{{ description }}</td>
+                <td>{{ brand }}</td>
+                <td>{{ quantity }}</td>
+                <td> {{ category }}</td>
+                <td>
+                    <a href="/edit_toy/{{_id}}" class="btn btn-warning">Edit</a>
+                    <a href="/delete_toy/{{_id}}" class="btn btn-warning"
+                        onclick="return confirm('Are you sure you want to delete this toy?')">Delete</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="9">Toy list is empty!!!</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{!-- {!! toys->withQueryString()->links('pagination::bootstrap-5') !!} --}}
+</div>

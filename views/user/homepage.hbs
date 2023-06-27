@@ -1,0 +1,77 @@
+<head>
+    <title>Toy Store</title>
+    <style>
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            color: #445760;
+        }
+
+        .nav {
+            margin-top: -10px;
+            background: #6f42c1;
+            /* overflow: hidden; */
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav ul li {
+            border-radius: 10px black;
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .nav ul li a {
+            /* float: left; */
+            display: block;
+            padding: 10px;
+            font-size: 18px;
+            color: whitesmoke;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav ul li a:hover {
+            background-color: #333;
+            color: gainsboro;
+            border-radius: 5%;
+        }
+
+        main .container a {
+            margin-top: 300px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="welcome">
+            <h2 align="center">Welcome to our Shop!</h2>
+            <p align="center">[ Hope you enjoy our service!!! ]</p>
+            <br>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="/user/homepage">Home</a></li>
+                <li><a href="/user/toy_list">View Toy List</a></li>
+                <li><a href="/admin/homepage">Login as Admin</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="text-center">
+                <a href="/user/toy_list" class="btn btn-primary button">Shop Now</a>
+            </div>
+        </div>
+    </main>
+</body>
